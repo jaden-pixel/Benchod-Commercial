@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benchod Commercial — Texas Hotel Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E0C0A;
+    --charcoal:#1B1814;
+    --gold:#B8915A;
+    --gold-bright:#D9B074;
+    --terracotta:#A8462F;
+    --cream:#EFE7D8;
+    --cream-dim:#C9BFAE;
+    --line: rgba(239,231,216,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 6vw;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 6vw;
+    mix-blend-mode:difference;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:0.01em;
+  }
+  .logo span{color:var(--gold-bright); font-style:italic; font-weight:400;}
+  .nav-links{display:flex; gap:36px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;}
+  .nav-links a{opacity:0.85; transition:opacity .25s;}
+  .nav-links a:hover{opacity:1;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:#0a1118;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    z-index:1;
+  }
+  .hero-scrim{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+      linear-gradient(180deg, rgba(10,17,24,0.55) 0%, rgba(10,17,24,0.05) 30%, rgba(10,17,24,0.15) 55%, rgba(10,17,24,0.88) 100%);
+  }
+
+  .hero-content{
+    position:relative; z-index:5;
+    width:100%;
+    padding:0 6vw 9vh;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--gold-bright);
+    display:inline-block;
+    padding:6px 12px;
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:340;
+    font-size:clamp(2.6rem, 6.4vw, 5.2rem);
+    line-height:0.98;
+    color:var(--cream);
+    text-shadow:0 2px 24px rgba(0,0,0,0.55);
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:600;
+    color:var(--gold-bright);
+  }
+  .hero-sub{
+    margin-top:26px;
+    max-width:460px;
+    font-size:1.02rem;
+    line-height:1.55;
+    color:var(--cream-dim);
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    align-items:center;
+  }
+  .btn{
+    font-family:'Inter';
+    font-weight:600;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    padding:15px 28px;
+    border-radius:2px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:inline-block;
+  }
+  .btn-primary{
+    background:var(--gold-bright);
+    color:var(--ink);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.35); }
+  .btn-ghost{
+    color:var(--cream);
+    border-bottom:1.5px solid var(--cream);
+    padding:15px 4px;
+  }
+
+  .portrait-platform{ position:relative; width:min(360px, 92%); }
+  .portrait-glow{
+    position:absolute;
+    bottom:6%;
+    left:50%;
+    transform:translateX(-50%);
+    width:78%;
+    height:36px;
+    background:radial-gradient(ellipse, rgba(0,0,0,0.35), transparent 75%);
+    filter:blur(4px);
+    z-index:1;
+  }
+  .portrait-img{
+    position:relative;
+    z-index:3;
+    width:100%;
+    display:block;
+    border-radius:4px 4px 0 0;
+    filter: drop-shadow(0 30px 40px rgba(10,8,6,0.45)) saturate(1.05) contrast(1.04);
+    mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+  }
+  .ledge{
+    position:relative;
+    z-index:2;
+    margin-top:-6px;
+    height:14px;
+    background:linear-gradient(180deg, var(--gold-bright), var(--gold) 60%, #7a5c34);
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+  }
+  .ledge::before, .ledge::after{
+    content:'';
+    position:absolute;
+    top:0; bottom:0;
+    width:18px;
+    background:linear-gradient(90deg, rgba(0,0,0,0.25), transparent);
+  }
+  .ledge::after{ right:0; transform:scaleX(-1); }
+
+  .scroll-cue{
+    position:absolute;
+    right:6vw; bottom:5vh;
+    z-index:6;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.15em;
+    color:var(--cream-dim);
+    text-transform:uppercase;
+    writing-mode:vertical-rl;
+    opacity:0.7;
+  }
+  @media (max-width:860px){
+    .hero-content{padding-bottom:6vh;}
+    .scroll-cue{display:none;}
+  }
+
+  /* ---------- TICKER / SIGNATURE STRIP ---------- */
+  .ticker{
+    background:var(--charcoal);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:16px 0;
+  }
+  .ticker-inner{
+    display:inline-flex;
+    animation:scroll 32s linear infinite;
+  }
+  .ticker-inner span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cream-dim);
+    padding:0 32px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .ticker-inner span::before{
+    content:'◆';
+    color:var(--gold);
+    font-size:0.6rem;
+  }
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:120px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:70px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:30px;
+  }
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .section-title{
+    font-family:'Fraunces', serif;
+    font-weight:340;
+    font-size:clamp(1.8rem, 3.4vw, 2.9rem);
+    margin-top:14px;
+    max-width:560px;
+    color:var(--cream);
+  }
+  .section-title em{ color:var(--gold-bright); font-style:italic; font-weight:500; }
+  .section-note{
+    max-width:300px;
+    font-size:0.92rem;
+    line-height:1.6;
+    color:var(--cream-dim);
+  }
+
+  /* ---------- LISTINGS (skyline-ledger motif) ---------- */
+  .ledger{
+    display:flex;
+    flex-direction:column;
+  }
+  .ledger-row{
+    display:grid;
+    grid-template-columns:0.4fr 2.4fr 2fr 0.9fr 0.6fr;
+    gap:24px;
+    align-items:center;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .ledger-row.head{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--cream-dim);
+    padding-bottom:16px;
+  }
+  .ledger-row:not(.head):hover{ background:rgba(185,145,90,0.05); }
+  .ledger-row .city{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+  }
+  .ledger-row .name{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-weight:450;
+    color:var(--cream);
+  }
+  .ledger-row .meta{ font-size:0.85rem; color:var(--cream-dim); }
+  .ledger-row .price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.9rem;
+    color:var(--cream);
+  }
+  .ledger-row .tag{
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--gold-bright);
+    padding:5px 10px;
+    width:fit-content;
+    border-radius:2px;
+  }
+  @media (max-width:760px){
+    .ledger-row{grid-template-columns:1fr 1fr; row-gap:8px;}
+    .ledger-row.head{display:none;}
+    .ledger-row .name{grid-column:1/-1;}
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .stat{
+    background:var(--ink);
+    padding:46px 30px;
+  }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:2.6rem;
+    color:var(--gold-bright);
+  }
+  .stat .lbl{
+    margin-top:10px;
+    font-size:0.82rem;
+    color:var(--cream-dim);
+    line-height:1.4;
+  }
+  @media (max-width:760px){ .stats{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- ABOUT / FOUNDER STRIP ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .about-copy p{
+    font-size:1.05rem;
+    line-height:1.7;
+    color:var(--cream-dim);
+    margin-bottom:18px;
+  }
+  .about-copy strong{ color:var(--cream); font-weight:600; }
+  .quote-block{
+    border-left:2px solid var(--gold);
+    padding-left:24px;
+    margin-top:30px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--cream);
+    line-height:1.5;
+  }
+  @media (max-width:860px){ .about{grid-template-columns:1fr;} }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background:linear-gradient(160deg, var(--charcoal), var(--ink));
+    text-align:center;
+    padding:140px 0;
+    position:relative;
+  }
+  .cta::before{
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .cta h2{
+    font-family:'Fraunces', serif;
+    font-weight:340;
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    max-width:780px;
+    margin:0 auto 30px;
+  }
+  .cta h2 em{ color:var(--terracotta); font-style:italic; font-weight:600; }
+  .cta .btn-primary{ background:var(--gold-bright); color:var(--ink); }
+  .cta .btn-primary:hover{ box-shadow:0 10px 30px rgba(217,176,116,0.35); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:50px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    font-size:0.8rem;
+    color:var(--cream-dim);
+  }
+  footer .logo{ color:var(--cream); }
+  .footer-links{ display:flex; gap:28px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud-layer, .ticker-inner{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Benchod <span>Commercial</span></div>
+  <div class="nav-links">
+    <a href="#listings">Listings</a>
+    <a href="#stats">Market</a>
+    <a href="#about">Firm</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img class="hero-bg" src="hero.png" alt="Benchod Commercial broker on a rooftop terrace above the clouds at sunset">
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow">Texas Hospitality Real Estate</span>
+    <h1>Hotels built on<br>higher <em>ground.</em></h1>
+    <p class="hero-sub">Benchod Commercial brokers hotel and hospitality real estate across Texas — from flagged interstate properties to boutique downtown assets. We see the deal from the rooftop down.</p>
+    <div class="hero-actions">
+      <a href="#listings" class="btn btn-primary">View Listings</a>
+      <a href="#contact" class="btn btn-ghost">Talk to a Broker</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll — Texas, all 254 counties</div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Houston</span><span>Dallas–Fort Worth</span><span>Austin</span><span>San Antonio</span><span>El Paso</span><span>Corpus Christi</span><span>Galveston</span><span>Lubbock</span>
+    <span>Houston</span><span>Dallas–Fort Worth</span><span>Austin</span><span>San Antonio</span><span>El Paso</span><span>Corpus Christi</span><span>Galveston</span><span>Lubbock</span>
+  </div>
+</div>
+
+<section id="listings">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Current Inventory</div>
+        <div class="section-title">Hotel assets <em>on the market</em> right now.</div>
+      </div>
+      <p class="section-note">A sample of active hospitality listings across Texas metros. Full underwriting packages available on request.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="ledger-row head">
+        <div>Market</div>
+        <div>Property</div>
+        <div>Class / Keys</div>
+        <div>Asking Price</div>
+        <div>Status</div>
+      </div>
+      <div class="ledger-row">
+        <div class="city">TOM</div>
+        <div class="name">Comfort Suites Tomball Medical Center</div>
+        <div class="meta">13636 Michel Rd, Tomball, TX 77375 · 55 keys</div>
+        <div class="price">$4.5MM</div>
+        <div class="tag">Active</div>
+      </div>
+      <div class="ledger-row">
+        <div class="city">HUM</div>
+        <div class="name">Comfort Suites Humble – Houston IAH</div>
+        <div class="meta">7502 N Sam Houston Pkwy E, Humble, TX 77396 · 86 keys</div>
+        <div class="price">$10MM</div>
+        <div class="tag">Active</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stats" style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head" style="border-bottom:none; margin-bottom:50px;">
+      <div>
+        <div class="section-label">Track Record</div>
+        <div class="section-title">Numbers from <em>the field.</em></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">$1.2B+</div><div class="lbl">Hotel transaction volume closed in Texas</div></div>
+      <div class="stat"><div class="num">87</div><div class="lbl">Hospitality assets sold since founding</div></div>
+      <div class="stat"><div class="num">41</div><div class="lbl">Texas markets actively covered</div></div>
+      <div class="stat"><div class="num">94 Days</div><div class="lbl">Average time from listing to executed LOI</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="about-copy">
+      <div class="section-label" style="margin-bottom:18px;">The Firm</div>
+      <div class="section-title" style="margin-top:0; margin-bottom:26px;">Brokers who <em>underwrite</em> like operators.</div>
+      <p>Benchod Commercial focuses exclusively on hotel and hospitality real estate in Texas. We don't dabble in office or retail — every listing we take, every buyer we represent, every market we cover is hospitality.</p>
+      <p>That focus means we read a STR report the way most brokers read a rent roll, and we know which flags, franchise agreements, and PIPs actually move a cap rate.</p>
+      <div class="quote-block">"We don't sell square footage. We sell ADR, RevPAR, and the next ten years of a market's tourism curve."</div>
+    </div>
+    <div class="portrait-platform" style="margin:0 auto;">
+      <div class="portrait-glow"></div>
+      <img class="portrait-img" src="agent.png" alt="Benchod Commercial founding broker" style="filter: drop-shadow(0 20px 30px rgba(10,8,6,0.4)) grayscale(0.15) contrast(1.05);">
+      <div class="ledge"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Buying, selling, or refinancing a <em>Texas hotel?</em></h2>
+    <p style="color:var(--cream-dim); max-width:520px; margin:0 auto 40px; font-size:1.02rem;">Send us the address and the flag. We'll send back a pricing opinion within 48 hours.</p>
+    <a href="mailto:deals@benchodcommercial.com" class="btn btn-primary">deals@benchodcommercial.com</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="logo">Benchod <span>Commercial</span></div>
+  <div class="footer-links">
+    <a href="#listings">Listings</a>
+    <a href="#about">Firm</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div>© 2026 Benchod Commercial · Licensed Texas Real Estate Brokerage</div>
+</footer>
+
+</body>
+</html>
