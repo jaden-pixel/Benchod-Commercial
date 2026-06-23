@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benchod Commercial — Texas Hotel Real Estate</title>
+<link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -37,11 +38,15 @@
     mix-blend-mode:difference;
   }
   .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
     font-family:'Fraunces', serif;
     font-weight:600;
     font-size:1.15rem;
     letter-spacing:0.01em;
   }
+  .logo img{ height:34px; width:auto; display:block; }
   .logo span{color:var(--gold-bright); font-style:italic; font-weight:400;}
   .nav-links{display:flex; gap:36px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;}
   .nav-links a{opacity:0.85; transition:opacity .25s;}
@@ -316,31 +321,41 @@
     .ledger-row .name{grid-column:1/-1;}
   }
 
-  /* ---------- STATS ---------- */
-  .stats{
+  /* ---------- SERVICES ---------- */
+  .services{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(3, 1fr);
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
   }
-  .stat{
+  .service{
     background:var(--ink);
-    padding:46px 30px;
+    padding:50px 36px;
+    display:flex;
+    flex-direction:column;
   }
-  .stat .num{
+  .service-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    margin-bottom:24px;
+  }
+  .service-name{
     font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:2.6rem;
-    color:var(--gold-bright);
+    font-weight:500;
+    font-size:1.5rem;
+    color:var(--cream);
+    line-height:1.15;
+    margin-bottom:16px;
   }
-  .stat .lbl{
-    margin-top:10px;
-    font-size:0.82rem;
+  .service-desc{
+    font-size:0.92rem;
+    line-height:1.6;
     color:var(--cream-dim);
-    line-height:1.4;
   }
-  @media (max-width:760px){ .stats{grid-template-columns:1fr 1fr;} }
+  @media (max-width:760px){ .services{grid-template-columns:1fr;} }
 
   /* ---------- ABOUT / FOUNDER STRIP ---------- */
   .about{
@@ -414,10 +429,10 @@
 <body>
 
 <nav>
-  <div class="logo">Benchod <span>Commercial</span></div>
+  <div class="logo"><img src="logo-icon.png" alt="Benchod Commercial"> Benchod <span>Commercial</span></div>
   <div class="nav-links">
     <a href="#listings">Listings</a>
-    <a href="#stats">Market</a>
+    <a href="#services">Services</a>
     <a href="#about">Firm</a>
     <a href="#contact">Contact</a>
   </div>
@@ -483,19 +498,31 @@
   </div>
 </section>
 
-<section id="stats" style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section id="services" style="background:var(--charcoal); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <div class="section-head" style="border-bottom:none; margin-bottom:50px;">
       <div>
-        <div class="section-label">Track Record</div>
-        <div class="section-title">Numbers from <em>the field.</em></div>
+        <div class="section-label">What We Do</div>
+        <div class="section-title">Three ways we <em>move a deal.</em></div>
       </div>
+      <p class="section-note">Every engagement runs through one of three lanes — each handled by brokers who only work hotels.</p>
     </div>
-    <div class="stats">
-      <div class="stat"><div class="num">$1.2B+</div><div class="lbl">Hotel transaction volume closed in Texas</div></div>
-      <div class="stat"><div class="num">87</div><div class="lbl">Hospitality assets sold since founding</div></div>
-      <div class="stat"><div class="num">41</div><div class="lbl">Texas markets actively covered</div></div>
-      <div class="stat"><div class="num">94 Days</div><div class="lbl">Average time from listing to executed LOI</div></div>
+    <div class="services">
+      <div class="service">
+        <div class="service-num">01</div>
+        <div class="service-name">Debt Refinance</div>
+        <div class="service-desc">Repositioning maturing loans against current NOI and rate environments, with lender relationships built specifically around hospitality collateral.</div>
+      </div>
+      <div class="service">
+        <div class="service-num">02</div>
+        <div class="service-name">Acquisitions</div>
+        <div class="service-desc">Sourcing on- and off-market hotel assets across Texas, underwritten against flag performance, STR data, and PIP exposure before you ever see a deck.</div>
+      </div>
+      <div class="service">
+        <div class="service-num">03</div>
+        <div class="service-name">Investment Sales<br>Specializing in Benchods</div>
+        <div class="service-desc">Full-cycle disposition for hospitality assets — pricing, marketing, and closing — run exclusively by the Benchod Commercial team.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -526,7 +553,7 @@
 </section>
 
 <footer class="wrap">
-  <div class="logo">Benchod <span>Commercial</span></div>
+  <div class="logo"><img src="logo-icon.png" alt="Benchod Commercial"> Benchod <span>Commercial</span></div>
   <div class="footer-links">
     <a href="#listings">Listings</a>
     <a href="#about">Firm</a>
